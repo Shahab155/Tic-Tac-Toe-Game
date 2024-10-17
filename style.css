@@ -1,0 +1,84 @@
+* {
+    margin:0;
+    padding:0
+}
+
+body {
+    background-color: #3C3D37;
+    text-align: center;
+}
+
+.container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.game {
+    
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:1.5vmin
+
+}
+
+.box {
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+    font-size:8vmin;
+    background-color: #ffffc7;
+    color:rgb(244, 178, 11)
+
+}
+
+.resetBtn {
+    padding:1rem;
+    background-color: #151515;
+    color:#ffffff;
+    font-size:1rem;
+    border-radius:1rem ;
+    border:none
+}
+
+
+.masg {
+    color:goldenrod;
+    
+    
+    
+}
+
+.newGameButton {
+    padding:0.85rem;
+    font-size: 1rem;
+    color:white;
+    background-color:#243642 ;
+    border-radius: 1rem;
+    display: block;
+    border:none
+}
+
+.masgContainer {
+    height:100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1rem
+}
+
+.hide {
+    display: none;
+}
+
+h1 {
+    color:goldenrod
+}
