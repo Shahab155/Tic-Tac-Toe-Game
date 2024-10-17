@@ -92,10 +92,7 @@ let checkWinner = () => {
       if (position1Val === position2Val && position2Val === position3Val) {
         showWinner(position1Val);
         disableButtons();
-        
-       
-
-
+        shahab.innerText = `Player ${position1Val}, Shahab! Congratulates you🎉`
         count = 0;
       }
     }
@@ -114,7 +111,7 @@ for(let box of boxes){
      if(count === 9){
         masgContainer.classList.remove("hide");
         masg.innerText = "Game Draw";
-        shahab.innerText = "Shahab! wishes you better luck next time!"
+        shahab.innerText = "Shahab! wishes you better luck for the next time!"
         
        
      }
