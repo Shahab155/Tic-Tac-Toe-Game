@@ -68,10 +68,11 @@ body {
 }
 
 .masgContainer {
-    height:150vmin;
+    height:100vmin;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     gap:1rem
 }
 
@@ -83,6 +84,7 @@ h1 {
     color:goldenrod
 }
 
-/* @media  (min-width:480px){
-    .masgContainer {height:300vmin;}
-} */
+@media  (min-width:250px) and (max-width:460px) {
+    .masgContainer {height:185vmin ;}
+    
+}
