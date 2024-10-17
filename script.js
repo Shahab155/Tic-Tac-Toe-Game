@@ -11,7 +11,7 @@ let count = 0;
 // to get reset button
 let resetBtn = document.querySelector(".resetBtn");
 //  declare a variable named turn O, the condition will be applied on it
-let turnO = true;
+let turnX = true;
 
 // define a function that will disable all the buttons once a winner announced
 const disableButtons = () => {
@@ -53,17 +53,17 @@ let winPatterns = [
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
    
-    //  this condition defines that when turnO is true print "O" in the box, and update the value to false
-    if (turnO) {
-      turnO = false;
-      box.innerText = "O";
-      box.style.color = "green";
+    //  this condition defines that when turnO is true print "X" in the box, and update the value to false
+    if (turnX) {
+      turnX = false;
+      box.innerText = "X";
+      box.style.color = "red";
      
       // in else part the turnO will be false and it will print "X" in the box and update value to true
     } else {
-      turnO = true;
-      box.innerText = "X";
-      box.style.color = "red";
+      turnX = true;
+      box.innerText = "O";
+      box.style.color = "green";
       
     }
 
