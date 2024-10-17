@@ -92,7 +92,10 @@ let checkWinner = () => {
       if (position1Val === position2Val && position2Val === position3Val) {
         showWinner(position1Val);
         disableButtons();
-        shahab.innerText = "Shahab!  Congratulates you🎉"
+        
+       
+
+
         count = 0;
       }
     }
@@ -104,7 +107,6 @@ gameButton.addEventListener("click",resetGame);
 resetBtn.addEventListener("click",resetGame);
 
 
-
 // This will print a Game Draw message when no one is winner
 for(let box of boxes){
     box.addEventListener("click",()=>{
@@ -112,11 +114,11 @@ for(let box of boxes){
      if(count === 9){
         masgContainer.classList.remove("hide");
         masg.innerText = "Game Draw";
-        shahab.innerText = "Shahab! wishes you better, luck next time😊"
+        shahab.innerText = "Shahab! wishes you better luck next time!"
         
        
      }
-     console.log(count) 
+     
        
     })
 }
