@@ -3,7 +3,7 @@ let boxes = document.querySelectorAll(".box");
 let masgContainer = document.querySelector(".masgContainer");
 let gameButton = document.querySelector(".newGameButton");
 let masg = document.querySelector(".masg");
-let h2 = document.querySelector("h2")
+let shahab = document.querySelector(".me")
 
 let count = 0;
 
@@ -92,10 +92,7 @@ let checkWinner = () => {
       if (position1Val === position2Val && position2Val === position3Val) {
         showWinner(position1Val);
         disableButtons();
-        
-       
-
-
+        shahab.innerText = "Shahab!  Congratulates you🎉"
         count = 0;
       }
     }
@@ -107,22 +104,6 @@ gameButton.addEventListener("click",resetGame);
 resetBtn.addEventListener("click",resetGame);
 
 
-let draw = () => {
-    for(let box of boxes ){
-        box.addEventListener("click",()=>{
-            count++
-            if(count === "9"){
-  
-                masg.innerText = "Game Draw";
-                masgContainer.classList.remove("hide");
-            
-            };
-        });
-       
-    };
-   
-};    
-
 
 // This will print a Game Draw message when no one is winner
 for(let box of boxes){
@@ -131,6 +112,7 @@ for(let box of boxes){
      if(count === 9){
         masgContainer.classList.remove("hide");
         masg.innerText = "Game Draw";
+        shahab.innerText = "Shahab! wishes you better, luck next time😊"
         
        
      }
