@@ -92,7 +92,7 @@ let checkWinner = () => {
       if (position1Val === position2Val && position2Val === position3Val) {
         showWinner(position1Val);
         disableButtons();
-        h2.innerText = "Shahab! Congratulates you";
+        
        
 
 
@@ -131,7 +131,7 @@ for(let box of boxes){
      if(count === 9){
         masgContainer.classList.remove("hide");
         masg.innerText = "Game Draw";
-        h2.innerText = "Shahab! wishes you better luck next time";
+        
        
      }
      console.log(count) 
