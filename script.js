@@ -3,6 +3,7 @@ let boxes = document.querySelectorAll(".box");
 let masgContainer = document.querySelector(".masgContainer");
 let gameButton = document.querySelector(".newGameButton");
 let masg = document.querySelector(".masg");
+let h2 = document.querySelector("h2")
 
 let count = 0;
 
@@ -91,6 +92,10 @@ let checkWinner = () => {
       if (position1Val === position2Val && position2Val === position3Val) {
         showWinner(position1Val);
         disableButtons();
+        h2.innerText = "Shahab! Congratulates you";
+       
+
+
         count = 0;
       }
     }
@@ -126,6 +131,8 @@ for(let box of boxes){
      if(count === 9){
         masgContainer.classList.remove("hide");
         masg.innerText = "Game Draw";
+        h2.innerText = "Shahab! wishes you better luck next time";
+       
      }
      console.log(count) 
        
