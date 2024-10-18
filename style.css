@@ -4,7 +4,8 @@
 }
 
 body {
-    background-color: #FF6500
+    background-color:#285430
+
     ;
     text-align: center;
 }
@@ -82,7 +83,7 @@ body {
 }
 
 h1 {
-    color:white
+    color:goldenrod
 }
 h2 {
     color:#FFECC8
