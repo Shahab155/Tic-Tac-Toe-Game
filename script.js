@@ -1,121 +1,82 @@
-// Get all the boxes
-let boxes = document.querySelectorAll(".box");
-let masgContainer = document.querySelector(".masgContainer");
-let gameButton = document.querySelector(".newGameButton");
-let masg = document.querySelector(".masg");
-let shahab = document.querySelector(".me")
-
-let count = 0;
-
-
-
-// to get reset button
-let resetBtn = document.querySelector(".resetBtn");
-//  declare a variable named turn O, the condition will be applied on it
+"use strict";
+// get all elements having boxes class
+const boxes = document.querySelectorAll(".box");
+const resetButton = document.querySelector(".resetButton");
+const container = document.querySelector(".container");
+const messageContainer = document.querySelector(".masgContainer");
+const message = document.querySelector(".message");
+const newGameButton = document.querySelector(".newGameButton");
 let turnX = true;
-
-// define a function that will disable all the buttons once a winner announced
-const disableButtons = () => {
-    for(let box of boxes){
-    box.disabled = true;
-}
-}
-
-// define a function that will enable all the buttons new Game is clicked
-const enableButtons = () => {
-    for(let box of boxes){
-        box.disabled = false;
-        box.innerText = "";
-    }
-}
-
-// refine a function that will reset the game when reset button is clicked
-const resetGame = () => {
-    turnO = true;
-    enableButtons();
-    masgContainer.classList.add("hide");
-    count = 0;
-
-   
-}
-
-// Make a array of win patterns
-let winPatterns = [
-  [0, 1, 2],
-  [0, 3, 6],
-  [0, 4, 8],
-  [1, 4, 7],
-  [2, 5, 8],
-  [2, 4, 6],
-  [3, 4, 5],
-  [6, 7, 8],
-];
-// add a eventListener to each box by appling loop on boxes array
+let count = 0;
+// get each box by calling for each method
 boxes.forEach((box) => {
-  box.addEventListener("click", () => {
-   
-    //  this condition defines that when turnO is true print "X" in the box, and update the value to false
-    if (turnX) {
-      turnX = false;
-      box.innerText = "X";
-      box.style.color = "red";
-     
-      // in else part the turnO will be false and it will print "X" in the box and update value to true
-    } else {
-      turnX = true;
-      box.innerText = "O";
-      box.style.color = "green";
-      
-    }
-
-
-    // it will disable a button once it is clicked
-    box.disabled = true;
-
-    // This is a function that will check the winner and print a message
-    checkWinner();
-    
-  });
-});
-const showWinner = (winner) => {
-  masg.innerText = `Congratulations, Winner is Player ${winner}`;
-  masgContainer.classList.remove("hide");
-};
-
-let checkWinner = () => {
-  for (let pattern of winPatterns) {
-    let position1Val = boxes[pattern[0]].innerText;
-    let position2Val = boxes[pattern[1]].innerText;
-    let position3Val = boxes[pattern[2]].innerText;
-
-    if (position1Val != "" && position2Val != "" && position3Val != "") {
-      if (position1Val === position2Val && position2Val === position3Val) {
-        showWinner(position1Val);
-        disableButtons();
-        shahab.innerText = `Player ${position1Val}, Shahab! Congratulates you🎉`
+    // event handler on each box and condition to show the text in the box
+    box.addEventListener("click", () => {
+        if (turnX) {
+            turnX = false;
+            box.innerHTML = "X";
+            box.style.color = "red";
+        }
+        else {
+            box.innerHTML = "O";
+            box.style.color = "green";
+            turnX = true;
+        }
+        count++;
+        box.disabled = true;
+        checkWinner();
+        if (count == 9) {
+            container.style.display = "none";
+            messageContainer.style.display = "flex";
+            message.innerHTML = `Oops!😥 Game Over`;
+        }
+    });
+    // added eventListner to the rest button.
+    resetButton.addEventListener("click", () => {
+        // it clears the text inside box
+        box.innerHTML = "";
+        // it enables boxes again
+        box.disabled = false;
         count = 0;
-      }
+    });
+    // declare a funcion that will restart the game, when new game button is clicked
+    newGameButton.addEventListener("click", () => {
+        container.style.display = "flex";
+        box.innerHTML = "";
+        messageContainer.style.display = "none";
+        box.disabled = false;
+        count = 0;
+    });
+    // add an event listner to new game button
+});
+// make an array of win patterns
+const winPatterns = [
+    [0, 1, 2],
+    [0, 3, 6],
+    [0, 4, 8],
+    [1, 4, 7],
+    [2, 5, 8],
+    [2, 4, 6],
+    [3, 4, 5],
+    [6, 7, 8],
+];
+// now for loop to get each pattern of winPattern
+const checkWinner = () => {
+    for (let pattern of winPatterns) {
+        let positionVal1 = boxes[pattern[0]].innerHTML;
+        let positionVal2 = boxes[pattern[1]].innerHTML;
+        let positionVal3 = boxes[pattern[2]].innerHTML;
+        if (positionVal1 != "" && positionVal2 != "" && positionVal3 != "") {
+            if (positionVal1 == positionVal2 && positionVal2 == positionVal3) {
+                // if all condition for win meets than winner function is called
+                showWinner(positionVal1);
+            }
+        }
     }
-  }
 };
-
-
-gameButton.addEventListener("click",resetGame);
-resetBtn.addEventListener("click",resetGame);
-
-
-// This will print a Game Draw message when no one is winner
-for(let box of boxes){
-    box.addEventListener("click",()=>{
-     count++
-     if(count === 9){
-        masgContainer.classList.remove("hide");
-        masg.innerText = "Game Draw";
-        shahab.innerText = "Shahab! wishes you better luck for the next time!"
-        
-       
-     }
-     
-       
-    })
+// function that will show the winner
+function showWinner(winner) {
+    container.style.display = "none";
+    messageContainer.style.display = "flex";
+    message.innerHTML = `Congratulations player ${winner} you win✨🎉`;
 }
